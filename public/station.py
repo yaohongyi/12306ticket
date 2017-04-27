@@ -24,7 +24,7 @@ class Station(object):
         # 因为正则表达式提取出来的是由元组组成的列表，利用dict转换成字典
         station_dict = dict(station_list)
         return station_dict
-    def db_operate(self, station_name, operate_type='select', data=None, host='127.0.0.1', port=3306, user='root',
+    def db_operate(self, station_name=None, operate_type='select', data=None, host='127.0.0.1', port=3306, user='root',
                      passwd='123456', db='12306ticket', charset='utf8'):
         '''
         对数据库station表的相关操作
@@ -54,3 +54,7 @@ class Station(object):
                 return cur.fetchone()[0]
             else:
                 return
+        # 提交插入到数据库的数据
+        conn.commit()
+        # 关闭数据库连接
+        conn.close()

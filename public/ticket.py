@@ -40,7 +40,7 @@ class Ticket(object):
               "&leftTicketDTO.from_station=%(from_station)s" \
               "&leftTicketDTO.to_station=%(to_station)s" \
               "&purpose_codes=%(purpose_codes)s" % self.kwargs
-        # print url
+        print url
         response = requests.get(url, verify=False).json()
         train_total = len(response['data'])
         print '根据您提供的乘车信息共查询到%d趟车次，车次信息如下：' % train_total
